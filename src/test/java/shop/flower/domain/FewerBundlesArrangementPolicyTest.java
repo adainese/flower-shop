@@ -1,4 +1,4 @@
-package shop.flower;
+package shop.flower.domain;
 
 import org.junit.jupiter.api.Test;
 
