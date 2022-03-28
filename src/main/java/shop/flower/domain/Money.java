@@ -10,6 +10,9 @@ import static java.util.Objects.requireNonNull;
  */
 public record Money(BigDecimal value) {
 
+  public static final Money ZERO = new Money(BigDecimal.ZERO);
+  public static final Money ONE = new Money(BigDecimal.ONE);
+
   private static final String unit = "$";
   private static final int MAX_SCALE = 2;
 
