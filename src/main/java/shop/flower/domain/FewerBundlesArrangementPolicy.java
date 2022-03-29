@@ -6,10 +6,13 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import static java.util.Comparator.comparingInt;
+import static java.util.Objects.requireNonNull;
 
 public class FewerBundlesArrangementPolicy implements ArrangementPolicy {
 
-  List<Bundle> arrange(int total, Set<Bundle> availableBundles) {
+  @Override
+  public List<Bundle> arrange(int total, Set<Bundle> availableBundles) {
+    requireNonNull(availableBundles, "availableBundles can't be null");
 
     var orderedBundles =
         availableBundles.stream()

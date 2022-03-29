@@ -1,12 +1,17 @@
 package shop.flower.domain;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.util.Objects.requireNonNull;
+
 public record BundlesArrangement(Map<Bundle, Integer> arrangement) {
 
-  public static BundlesArrangement fromBundles(Collection<Bundle> bundles) {
+  public static BundlesArrangement fromBundles(@NotNull Collection<Bundle> bundles) {
+    requireNonNull(bundles, "bundles can not be null");
     HashMap<Bundle, Integer> arrangement = new HashMap<>();
     bundles.forEach(bundle -> arrangement.merge(bundle, 1, Integer::sum));
     return new BundlesArrangement(arrangement);
