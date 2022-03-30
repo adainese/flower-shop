@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 
+import static java.math.RoundingMode.UNNECESSARY;
 import static java.util.Objects.requireNonNull;
 
 /**
@@ -18,12 +19,12 @@ public record Money(@NotNull BigDecimal value) {
   private static final String unit = "$";
   private static final int MAX_SCALE = 2;
 
-  public Money {
+  public Money(@NotNull BigDecimal value) {
     requireNonNull(value, "Money can't have null value");
     if(value.scale() > MAX_SCALE) {
       throw new IllegalArgumentException("Max decimal digits: " + MAX_SCALE);
     }
-    value = value.setScale(MAX_SCALE);
+   this.value = value.setScale(MAX_SCALE, UNNECESSARY);
   }
 
   public static Money parse(@NotNull String text) {

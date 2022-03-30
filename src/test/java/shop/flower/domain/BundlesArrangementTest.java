@@ -15,7 +15,8 @@ class BundlesArrangementTest {
           new Bundle(5, Money.ONE),
           new Bundle(10, Money.ONE.multiply(9L)),
           new Bundle(10, Money.ONE.multiply(9L)));
-  private static BundlesArrangement target = BundlesArrangement.fromBundles(BUNDLES);
+  private static BundlesArrangement target =
+      BundlesArrangement.fromBundles(new Item("00", "dummy"), BUNDLES);
 
   @Test
   void getTotalQuantity() {
