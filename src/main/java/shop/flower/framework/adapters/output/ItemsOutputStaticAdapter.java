@@ -20,8 +20,8 @@ public enum ItemsOutputStaticAdapter implements ItemsOutputPort {
     this.items =
         Map.ofEntries(
             entry("R12", new Item("R12", "Roses")),
-            entry("L09", new Item("R12", "Lilies")),
-            entry("R12", new Item("T58", "Tulips")));
+            entry("L09", new Item("L09", "Lilies")),
+            entry("T58", new Item("T58", "Tulips")));
 
     this.bundles =
         Map.ofEntries(
