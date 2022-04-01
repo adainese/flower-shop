@@ -2,7 +2,9 @@
 
 This application implements The Flower Shop order bundling feature.
 
-It's a *bit* overkill for the assignment, but I'm assuming the Flower Shop will need some other features.
+It's a *bit* overkill for the assignment, but I'm assuming The Flower Shop will need some other features.
+
+The bundling process do NOT respect the order in which the order's lines are entered. This can be correct if it's an issue.
 
 I intentionally left out any logging capability, it seemed of little use currently and, in prospect, it will depend on the actual infrastructure.
 
