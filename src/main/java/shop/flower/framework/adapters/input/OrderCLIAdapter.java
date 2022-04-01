@@ -72,7 +72,7 @@ public class OrderCLIAdapter {
           .sorted(Map.Entry.comparingByKey(Comparator.comparingInt(Bundle::size).reversed()))
           .map(
               entry ->
-                  "\t\t%s x %s %s%n"
+                  "\t%s x %s %s%n"
                       .formatted(entry.getValue(), entry.getKey().size(), entry.getKey().cost()))
           .forEach(actualWriter::append);
     }

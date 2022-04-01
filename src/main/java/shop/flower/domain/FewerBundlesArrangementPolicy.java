@@ -7,6 +7,10 @@ import java.util.Set;
 import static java.util.Comparator.comparingInt;
 import static java.util.Objects.requireNonNull;
 
+/**
+ * This policy tries to use the fewer bundles possible.
+ * When two or more arrangements comply, the arrangement with the biggest bundles is preferred.
+ */
 public class FewerBundlesArrangementPolicy implements ArrangementPolicy {
 
   @Override
@@ -31,12 +35,12 @@ public class FewerBundlesArrangementPolicy implements ArrangementPolicy {
         @Override public boolean isSuccess() {
           return true;
         }
-      };
+      }
       record Failure() implements Result {
         @Override public boolean isSuccess() {
           return false;
         }
-      };
+      }
     }
 
     public List<Bundle> arrange(int total) {
@@ -52,9 +56,9 @@ public class FewerBundlesArrangementPolicy implements ArrangementPolicy {
       if (remain == 0) {
         return new Result.Success(new ArrayList<>());
       } else if (remain >= bundle.size()) {
-        for (Bundle children : availableBundles) {
-          if (bundle.size() >= children.size()) {
-            var result = inner(children, remain - bundle.size());
+        for (Bundle child : availableBundles) {
+          if (bundle.size() >= child.size()) {
+            var result = inner(child, remain - bundle.size());
             if (result instanceof Result.Success success) {
               success.bundles.add(0, bundle);
               return success;
