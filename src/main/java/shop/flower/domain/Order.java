@@ -26,7 +26,22 @@ public class Order {
         .entrySet()
         .stream()
         .map(entry -> new OrderItem(entry.getKey(), entry.getValue()))
+        .map(Order::checkItemQuantity)
+        .filter(Order::isPositiveQuantity)
         .toList();
+  }
+
+  private static OrderItem checkItemQuantity(OrderItem item) {
+    if (item.quantity() < 0) {
+      throw new IllegalArgumentException(
+          "Order item's quantity can not be negative, found %s with quantity %s"
+              .formatted(item.item(), item.quantity()));
+    }
+    return item;
+  }
+
+  private static boolean isPositiveQuantity(OrderItem item) {
+    return item.quantity() > 0;
   }
 
   public OrderId getId() {
