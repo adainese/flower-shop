@@ -27,7 +27,11 @@ public class TreeFewerBundlesArrangementPolicy implements ArrangementPolicy {
   private record DFSListWalker(List<Bundle> availableBundles) {
 
     public List<Bundle> arrange(int total) {
-      return availableBundles.stream().map(bundle -> inner(bundle, total)).filter(Objects::nonNull).findFirst().orElse(null);
+      return availableBundles.stream()
+          .map(bundle -> inner(bundle, total))
+          .filter(Objects::nonNull)
+          .findFirst()
+          .orElse(null);
     }
 
     private List<Bundle> inner(Bundle bundle, int remain) {

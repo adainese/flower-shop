@@ -70,4 +70,17 @@ abstract class AbstractFewerBundlesArrangementPolicy {
         .hasSize(3)
         .containsExactly(new Bundle(5), new Bundle(3), new Bundle(3));
   }
+
+  @Test
+  void thirtyEightTulipsSixBundles() {
+    assertThat(dut().arrange(38, BUNDLES.get("T58")))
+        .hasSize(6)
+        .containsExactly(
+            new Bundle(9),
+            new Bundle(9),
+            new Bundle(9),
+            new Bundle(5),
+            new Bundle(3),
+            new Bundle(3));
+  }
 }
