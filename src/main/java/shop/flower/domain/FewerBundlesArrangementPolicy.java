@@ -21,11 +21,6 @@ public class FewerBundlesArrangementPolicy implements ArrangementPolicy {
 
     List<Bundle> result;
 
-    // TODO: this seems a good candidate for using a recursive strategy.
-    // Try to refactor.
-    // Heap size/recursion depth should not be an issue but consider profiling or use tail
-    // recursion.
-
     do {
       result = inner(total, orderedBundles);
       if (result != null) {
